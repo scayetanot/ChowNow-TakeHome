@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ChowNow</string>
+    <string name="restaurant_name">Name Restaurant</string>
 </resources>
