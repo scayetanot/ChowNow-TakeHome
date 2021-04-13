@@ -17,7 +17,7 @@ class RemoteDataSourceImpl(
 ) : RemoteDataSource {
     @RequiresApi(Build.VERSION_CODES.O)
     override suspend fun getRestaurantLocations(
-        id: Int): ResultLocations<Locations> =
+        id: String?): ResultLocations<Locations> =
         withContext(ioDispatcher) {
             val request =
                 api.getRestaurantLocations(id)

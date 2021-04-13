@@ -10,7 +10,7 @@ import com.example.chownow.data.model.Locations
 interface LocalDataSourceRoomDb {
 
     @Query("SELECT * FROM Locations WHERE id = :id")
-    suspend fun getLocations(id: Int): Locations
+    suspend fun getLocations(id: String?): Locations
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun setLocations(locations: Locations?)

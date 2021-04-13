@@ -2,9 +2,8 @@ package com.example.chownow.di.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.chownow.ui.details.LocationDetailsFragment
 import com.example.chownow.ui.details.LocationDetailsFragmentViewModel
-import com.example.chownow.ui.list.ListLocationsFragmentViewModel
+import com.example.chownow.ui.list.LocationsListFragmentViewModel
 import com.example.chownow.ui.main.MainActivityViewModel
 import dagger.Binds
 import dagger.Module
@@ -20,8 +19,8 @@ abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(ListLocationsFragmentViewModel::class)
-    abstract fun bindListLocationsFragmentVM(listLocationsFragmentViewModel: ListLocationsFragmentViewModel): ViewModel
+    @ViewModelKey(LocationsListFragmentViewModel::class)
+    abstract fun bindListLocationsFragmentVM(listLocationsFragmentViewModel: LocationsListFragmentViewModel): ViewModel
 
     @Binds
     @IntoMap

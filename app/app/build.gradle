@@ -16,7 +16,7 @@ android {
         versionCode 1
         versionName "1.0"
 
-        buildConfigField 'String', 'CHOWNOW_URL', "\"https://api.darksky.net/\""
+        buildConfigField 'String', 'CHOWNOW_URL', "\"https://api.chownow.com/\""
 
         //multidex enabling
         multiDexEnabled true

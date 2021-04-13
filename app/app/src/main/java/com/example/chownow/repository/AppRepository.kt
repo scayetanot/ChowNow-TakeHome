@@ -4,7 +4,7 @@ import com.example.chownow.data.ResultLocations
 import com.example.chownow.data.model.Locations
 
 interface AppRepository {
-    suspend fun getLocations(id: Int): ResultLocations<Locations>
-    suspend fun getLocationsFromApi(id: Int): ResultLocations<Locations>
-    suspend fun getLocationsFromDb(id: Int): ResultLocations<Locations>
+    suspend fun getLocations(id: String?): ResultLocations<Locations>
+    suspend fun getLocationsFromApi(id: String?): ResultLocations<Locations>
+    suspend fun getLocationsFromDb(id: String?): ResultLocations<Locations>
 }

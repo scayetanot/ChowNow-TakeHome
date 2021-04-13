@@ -5,7 +5,7 @@ import com.example.chownow.data_source.LocalDataSourceDataObject
 import com.example.chownow.data_source.LocalDataSourceRoomDb
 import com.example.chownow.di.modules.*
 import com.example.chownow.ui.details.LocationDetailsFragment
-import com.example.chownow.ui.list.ListLocationsFragment
+import com.example.chownow.ui.list.LocationsListFragment
 import com.example.chownow.ui.main.MainActivity
 import dagger.Component
 import retrofit2.Retrofit
@@ -31,6 +31,6 @@ interface AppComponents {
     fun appDataBase(): LocalDataSourceDataObject
 
     fun inject(mainActivity: MainActivity)
-    fun inject(listLocationsFragment: ListLocationsFragment)
+    fun inject(locationsListFragment: LocationsListFragment)
     fun inject(locationDetailsFragment: LocationDetailsFragment)
 }

@@ -17,7 +17,7 @@ class AppRepositoryImpl(
 
    // private val isInternetOn = InternetUtil.isInternetOn()
 
-    override suspend fun getLocationsFromApi(id: Int): ResultLocations<Locations> {
+    override suspend fun getLocationsFromApi(id: String?): ResultLocations<Locations> {
         return when (val result = remoteDataSource.getRestaurantLocations(id)) {
             is ResultLocations.Success -> {
                 val response = result.data
@@ -32,12 +32,12 @@ class AppRepositoryImpl(
         }
     }
 
-    override suspend fun getLocationsFromDb(id: Int): ResultLocations<Locations> =
+    override suspend fun getLocationsFromDb(id: String?): ResultLocations<Locations> =
         withContext(ioDispatcher) {
             ResultLocations.Success(localDataSource.getLocations(id))
         }
 
-    override suspend fun getLocations(id: Int): ResultLocations<Locations> {
+    override suspend fun getLocations(id: String?): ResultLocations<Locations> {
         return if (true) {
             getLocationsFromApi(id)
         } else {
