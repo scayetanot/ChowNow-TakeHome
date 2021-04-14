@@ -3,9 +3,12 @@ package com.example.chownow.ui.main
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.chownow.R
+import com.example.chownow.ui.details.LocationDetailsFragment
 import com.example.chownow.ui.list.LocationsListFragment
+import com.example.chownow.ui.list.OnLocationSelectedListener
+import com.example.chownow.utils.replaceFragment
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), OnLocationSelectedListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -14,5 +17,13 @@ class MainActivity : AppCompatActivity() {
                 .replace(R.id.listcontainer, LocationsListFragment())
                 .commitAllowingStateLoss()
         }
+    }
+
+    override fun onLocationSelected(id: String) {
+        replaceFragment(LocationDetailsFragment(), R.id.listcontainer, id)
+    }
+
+    companion object {
+        val LOCATION_ID: String = "location_id"
     }
 }

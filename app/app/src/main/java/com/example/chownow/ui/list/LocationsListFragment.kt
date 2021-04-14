@@ -42,7 +42,6 @@ class LocationsListFragment: Fragment() {
     ): View? {
         appComponents.inject(this)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_list_locations, container,false)
-
         return binding.root
     }
 
@@ -79,4 +78,5 @@ class LocationsListFragment: Fragment() {
             }
         }
     }
+
 }

@@ -11,6 +11,7 @@ import com.example.chownow.databinding.LocationItemBinding
 
 class LocationsListAdapter(
     var listOfLocations: List<RestaurantLocation>) : RecyclerView.Adapter<LocationsListAdapter.ViewHolder>() {
+    private lateinit var onLocationSelectedListener: OnLocationSelectedListener
 
     override fun getItemCount(): Int {
         return listOfLocations.size
@@ -37,6 +38,10 @@ class LocationsListAdapter(
 
         fun bindViewHolder(location: RestaurantLocation) {
             viewDataBinding.locationName.text = location.name
+            viewDataBinding.cardItem.setOnClickListener {
+                onLocationSelectedListener.onLocationSelected(location.id)
+            }
+
         }
     }
 
