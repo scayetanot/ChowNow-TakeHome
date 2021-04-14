@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.chownow.MainApplication
 import com.example.chownow.R
+import com.example.chownow.data.model.Locations
 import com.example.chownow.data.model.RestaurantLocation
 import com.example.chownow.databinding.FragmentListLocationsBinding
 import com.example.chownow.utils.viewModelProvider
@@ -25,8 +26,10 @@ class LocationsListFragment: Fragment() {
 
     private lateinit var locationsListAdapter: LocationsListAdapter
     private val appComponents by lazy { MainApplication.appComponents }
+    private lateinit var restaurantInformation: Locations
 
     private var listener: OnLocationSelectedListener? = null
+
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -74,6 +77,7 @@ class LocationsListFragment: Fragment() {
     private fun initObservers() {
         getViewModel().resultLocations.observe(viewLifecycleOwner, Observer { locationsList ->
             locationsList?.let {
+                restaurantInformation = it
                 binding.restaurantName.text = it.name
                 initRecycler(it.locations)
                 }
@@ -85,7 +89,7 @@ class LocationsListFragment: Fragment() {
         })
 
         getViewModel().selectItem.observe(viewLifecycleOwner, Observer {
-            listener?.onLocationSelected(it.toString())
+            listener?.onLocationSelected(restaurantInformation.id, restaurantInformation.locations[it].id)
         })
     }
 

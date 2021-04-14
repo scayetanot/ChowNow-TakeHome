@@ -8,15 +8,19 @@
     android:orientation="horizontal"
     tools:context=".ui.main.MainActivity">
 
-    <FrameLayout
-        android:id="@+id/listcontainer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 
     <FrameLayout
         android:id="@+id/detailscontainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
         android:visibility="gone" />
+
+    <FrameLayout
+        android:id="@+id/listcontainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
 
 </androidx.appcompat.widget.LinearLayoutCompat>

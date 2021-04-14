@@ -16,9 +16,4 @@ interface LocalDataSourceRoomDb {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun setLocations(locations: Locations?)
-
-  //  @Query("SELECT * FROM Locations WHERE id = :id")
-  //  suspend fun getLocationDetails(id: String?)
-
-
 }

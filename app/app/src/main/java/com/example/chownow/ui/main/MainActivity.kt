@@ -19,11 +19,12 @@ class MainActivity : AppCompatActivity(), OnLocationSelectedListener {
         }
     }
 
-    override fun onLocationSelected(id: String) {
-        replaceFragment(LocationDetailsFragment(), R.id.listcontainer, id)
+    override fun onLocationSelected(restaurantId: String, locationId: String) {
+        replaceFragment(LocationDetailsFragment(), R.id.listcontainer, restaurantId, locationId)
     }
 
     companion object {
+        val RESTAURANT_ID: String = "restaurant_id"
         val LOCATION_ID: String = "location_id"
     }
 }

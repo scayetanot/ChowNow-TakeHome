@@ -9,5 +9,5 @@ interface AppRepository {
     suspend fun getLocationsFromApi(id: String?): ResultLocations<Locations>
     suspend fun getLocationsFromDb(id: String?): ResultLocations<Locations>
 
-  //  suspend fun getLocationDetails(id: String): ResultLocations<RestaurantLocation>
+    suspend fun getLocationDetails(id: String): ResultLocations<List<RestaurantLocation>>
 }

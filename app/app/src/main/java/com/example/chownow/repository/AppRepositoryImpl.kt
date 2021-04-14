@@ -46,9 +46,9 @@ class AppRepositoryImpl(
         }
     }
 
-  //  override suspend fun getLocationDetails(id: String): ResultLocations<RestaurantLocation> =
-  //      withContext(ioDispatcher){
-  //          ResultLocations.Success(localDataSource.getLocationDetails(id))
-  //      }
+    override suspend fun getLocationDetails(id: String): ResultLocations<List<RestaurantLocation>> =
+        withContext(ioDispatcher){
+            ResultLocations.Success(localDataSource.getLocations(id).locations)
+        }
 
 }

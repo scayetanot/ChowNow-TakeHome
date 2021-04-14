@@ -1,5 +1,6 @@
 package com.example.chownow.data.model
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import com.google.gson.annotations.SerializedName
 
@@ -15,6 +16,7 @@ data class Locations(
     var hasApplePayEnabled: Boolean,
     @SerializedName("is_multi_concept")
     var isMultiConcept: Boolean,
+    @ColumnInfo(name = "locations")
     @SerializedName("locations")
     var locations: List<RestaurantLocation>,
     @SerializedName("name")

@@ -1,5 +1,6 @@
 package com.example.chownow.data.model
 
+import androidx.room.ColumnInfo
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
