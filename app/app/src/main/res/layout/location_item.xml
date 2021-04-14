@@ -3,6 +3,13 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <variable
+            name="position"
+            type="java.lang.Integer" />
+
+        <variable
+            name="viewModel"
+            type="com.example.chownow.ui.list.LocationsListFragmentViewModel" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -13,6 +20,7 @@
         card_view:cardBackgroundColor="@color/white"
         card_view:cardCornerRadius="25dp"
         card_view:cardElevation="5dp"
+        android:onClick="@{(v) -> viewModel.onItemClick(position)}"
         android:clickable="true"
         android:focusable="true"
         card_view:cardUseCompatPadding="true">

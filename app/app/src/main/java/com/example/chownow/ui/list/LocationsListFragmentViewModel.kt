@@ -1,6 +1,5 @@
 package com.example.chownow.ui.list
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -20,6 +19,9 @@ class LocationsListFragmentViewModel @Inject constructor(
     private var _errorMessage = MutableLiveData<String>()
     var errorMessage: LiveData<String> = _errorMessage
 
+    private var _selectedItem = MutableLiveData<Int>()
+    var selectItem: LiveData<Int> = _selectedItem
+
     fun getLocationsForRestaurant(id: String?){
         viewModelScope.launch {
             try{
@@ -35,6 +37,12 @@ class LocationsListFragmentViewModel @Inject constructor(
             } catch (e: java.lang.Exception) {
                 _errorMessage.postValue(e.message)
             }
+        }
+    }
+
+    fun onItemClick(index: Int){
+        viewModelScope.launch {
+            _selectedItem.postValue(index)
         }
     }
 }

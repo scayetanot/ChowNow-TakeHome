@@ -21,11 +21,12 @@ import javax.inject.Inject
 
 class LocationsListFragment: Fragment() {
 
-
     private val DEFAULTRESTAURANT: String = "1"
 
     private lateinit var locationsListAdapter: LocationsListAdapter
     private val appComponents by lazy { MainApplication.appComponents }
+
+    private var listener: OnLocationSelectedListener? = null
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -51,6 +52,24 @@ class LocationsListFragment: Fragment() {
         initObservers()
     }
 
+ //   interface OnLocationSelectedListener {
+ //       fun onLocationSelected(id: String)
+ //   }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        listener = if (context is OnLocationSelectedListener) {
+            context as OnLocationSelectedListener
+        } else {
+            throw ClassCastException("$context must implemenet OnLocationSelectedListener")
+        }
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        listener = null
+    }
+
     private fun initViews() {
         getViewModel().getLocationsForRestaurant(DEFAULTRESTAURANT)
     }
@@ -67,16 +86,19 @@ class LocationsListFragment: Fragment() {
         getViewModel().errorMessage.observe(viewLifecycleOwner, Observer {
             Toast.makeText(this.context,"Connection Error", Toast.LENGTH_LONG).show();
         })
+
+        getViewModel().selectItem.observe(viewLifecycleOwner, Observer {
+            listener?.onLocationSelected(it.toString())
+        })
     }
 
     private fun initRecycler(list: List<RestaurantLocation>) {
         if (!list.isNullOrEmpty()) {
-            locationsListAdapter = LocationsListAdapter(list)
+            locationsListAdapter = LocationsListAdapter(list, getViewModel())
             binding.recyclerView.apply {
                 layoutManager = LinearLayoutManager(activity)
                 adapter = locationsListAdapter
             }
         }
     }
-
 }
