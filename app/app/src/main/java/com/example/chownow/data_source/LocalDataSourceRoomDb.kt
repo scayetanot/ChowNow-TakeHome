@@ -4,7 +4,9 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.example.chownow.data.ResultLocations
 import com.example.chownow.data.model.Locations
+import com.example.chownow.data.model.RestaurantLocation
 
 @Dao
 interface LocalDataSourceRoomDb {
@@ -14,5 +16,9 @@ interface LocalDataSourceRoomDb {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun setLocations(locations: Locations?)
+
+  //  @Query("SELECT * FROM Locations WHERE id = :id")
+  //  suspend fun getLocationDetails(id: String?)
+
 
 }

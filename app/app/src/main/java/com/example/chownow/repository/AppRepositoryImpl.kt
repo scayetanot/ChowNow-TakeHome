@@ -3,6 +3,7 @@ package com.example.chownow.repository
 import com.example.chownow.data.RemoteDataNotFoundException
 import com.example.chownow.data.ResultLocations
 import com.example.chownow.data.model.Locations
+import com.example.chownow.data.model.RestaurantLocation
 import com.example.chownow.data_source.LocalDataSourceRoomDb
 import com.example.chownow.data_source.RemoteDataSource
 import com.example.chownow.di.IoDispatcher
@@ -44,4 +45,10 @@ class AppRepositoryImpl(
             getLocationsFromDb(id)
         }
     }
+
+  //  override suspend fun getLocationDetails(id: String): ResultLocations<RestaurantLocation> =
+  //      withContext(ioDispatcher){
+  //          ResultLocations.Success(localDataSource.getLocationDetails(id))
+  //      }
+
 }

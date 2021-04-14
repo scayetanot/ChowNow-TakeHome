@@ -62,7 +62,12 @@ dependencies {
     implementation 'com.android.support:multidex:1.0.3'
     implementation 'androidx.activity:activity-ktx:1.2.2'
 
+    implementation 'com.google.android.gms:play-services-base:17.6.0'
+    implementation 'com.google.android.gms:play-services-drive:17.0.0'
     implementation 'com.google.android.gms:play-services-location:18.0.0'
+    implementation 'com.google.android.gms:play-services-gcm:17.0.0'
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+
 
     //implementation 'com.google.android.gms:location:1.0.0'
    // implementation 'com.google.android.gms:play-services:12.0.1'

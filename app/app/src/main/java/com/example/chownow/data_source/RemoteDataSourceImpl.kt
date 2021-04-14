@@ -5,6 +5,7 @@ import androidx.annotation.RequiresApi
 import com.example.chownow.api.ApiService
 import com.example.chownow.data.ResultLocations
 import com.example.chownow.data.model.Locations
+import com.example.chownow.data.model.RestaurantLocation
 import com.example.chownow.di.IoDispatcher
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
@@ -33,5 +34,4 @@ class RemoteDataSourceImpl(
                 request.phone
             ))
         }
-
 }

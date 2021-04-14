@@ -52,9 +52,6 @@ class LocationsListFragment: Fragment() {
         initObservers()
     }
 
- //   interface OnLocationSelectedListener {
- //       fun onLocationSelected(id: String)
- //   }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
