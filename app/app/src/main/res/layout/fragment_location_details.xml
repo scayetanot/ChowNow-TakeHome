@@ -25,21 +25,37 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="30dp"
-            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="35dp"
             android:layout_marginEnd="30dp"
             android:orientation="vertical"
             android:gravity="top|center">
 
-            <TextView
-                android:id="@+id/open_or_close"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:textStyle="bold|italic"
-                android:textColor="@color/squid_ink"
-                android:padding="10dp"
-                android:text="--" />
+                android:layout_margin="0dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/location_is"
+                    android:textColor="@color/squid_ink"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/open_or_close"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/emptyTxt"
+                    android:textColor="@color/goji_berry"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
 
             <TextView
                 android:id="@+id/remaining_time"
@@ -47,15 +63,13 @@
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
                 android:textColor="@color/squid_ink"
-                android:padding="10dp"
                 android:visibility="gone"
-                android:text="--"/>
+                android:text="@string/emptyTxt"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -74,7 +88,7 @@
                     android:textSize="12sp"
                     android:textStyle="bold"
                     android:textColor="@color/goji_berry"
-                    android:text=""/>
+                    android:text="@string/emptyTxt"/>
 
             </LinearLayout>
 
@@ -82,7 +96,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -93,6 +106,13 @@
                     android:textStyle="bold"
                     android:textColor="@color/squid_ink"
                     android:text="@string/opening_hours"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/opening_hours"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+
 
             </LinearLayout>
 
@@ -117,23 +137,27 @@
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:textColor="@color/goji_berry"
-                android:text="--" />
+                android:text="@string/emptyTxt" />
 
             <TextView
                 android:id="@+id/address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textAlignment="center"
                 android:textSize="16sp"
                 android:textColor="@color/squid_ink"
-                android:text="--" />
+                android:text="@string/emptyTxt" />
 
             <TextView
                 android:id="@+id/phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:textSize="16sp"
-                android:textColor="@color/squid_ink"
-                android:text="--" />
+                android:clickable="true"
+                android:focusable="true"
+                android:textColor="@color/goji_berry"
+                android:text="@string/emptyTxt" />
 
         </LinearLayout>
 

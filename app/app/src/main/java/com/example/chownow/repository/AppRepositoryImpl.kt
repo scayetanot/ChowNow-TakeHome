@@ -49,9 +49,6 @@ class AppRepositoryImpl(
         }
     }
 
-    //As we are only pulling one restaurant, there is no need to use id
-    //In a global system, id will need to be passed and use to pull the proper
-    //restaurant from the Db
     override suspend fun getLocationDetails(id: String): ResultLocations<List<RestaurantLocation>> {
         return withContext(ioDispatcher) {
             try {

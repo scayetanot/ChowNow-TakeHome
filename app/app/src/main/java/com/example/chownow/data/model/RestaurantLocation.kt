@@ -10,7 +10,7 @@ data class RestaurantLocation (
     @SerializedName("address")
     var address: RestaurantAddress,
     @SerializedName("name")
-    var name: String,
+    var name: String?,
     @SerializedName("allows_order_for_now")
     var allowsOrderForNow: String,
     @SerializedName("display_properties")
@@ -18,7 +18,7 @@ data class RestaurantLocation (
     @SerializedName("fulfillment")
     var fulfillment: FullfillmentItem, //todo
     @SerializedName("phone")
-    var phone: String,
+    var phone: String?,
     @SerializedName("cuisines")
     var cuisines: List<String>
 

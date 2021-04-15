@@ -24,7 +24,7 @@
                 android:textSize="30sp"
                 android:textStyle="bold"
                 android:textColor="@color/squid_ink"
-                android:text="@string/restaurant_name" />
+                android:text="@string/emptyTxt" />
 
             <View
                 android:layout_width="match_parent"

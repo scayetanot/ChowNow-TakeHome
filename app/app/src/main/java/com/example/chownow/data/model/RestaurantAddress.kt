@@ -33,7 +33,7 @@ data class RestaurantAddress(
         @SerializedName("formatted_address")
         var formattedAddress: String,
         @SerializedName("place_formatted_address")
-        var placeFormattedAddress: String,
+        var placeFormattedAddress: String?,
         @SerializedName("is_google_place")
         var isGooglePlace: Boolean
 ) : Serializable

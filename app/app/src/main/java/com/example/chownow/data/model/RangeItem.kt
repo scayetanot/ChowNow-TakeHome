@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class RangeItem (
         @SerializedName("from")
-        var from: Int,
+        var from: String?,
         @SerializedName("to")
-        var to: String
+        var to: String?
 )
