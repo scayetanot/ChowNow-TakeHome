@@ -63,14 +63,13 @@ class LocationDetailsFragment: Fragment() {
 
         mapFragment = childFragmentManager.findFragmentById(R.id.map_fragment) as SupportMapFragment
         if (mapFragment != null) {
-            mapFragment.getMapAsync(OnMapReadyCallback {
-                mapGoogle = it
-
-                // Add a marker in Sydney and move the camera
-        //        val sydney = LatLng(-34.0, 151.0)
-        //        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        //        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
-            })
+            try{
+                mapFragment.getMapAsync(OnMapReadyCallback {
+                    mapGoogle = it
+                })
+            } catch (e: Exception) {
+                Toast.makeText(this.context, "Error - Impossible to load Map", Toast.LENGTH_SHORT).show()
+            }
         } else {
             Toast.makeText(this.context, "Error - Impossible to load Map", Toast.LENGTH_SHORT).show()
         }
