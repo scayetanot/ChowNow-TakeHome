@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,15 +8,17 @@
     tools:context=".ui.main.MainActivity">
 
 
-    <FrameLayout
+    <FrameLayout class="com.example.chownow.ui.details.LocationDetailsFragment"
         android:id="@+id/detailscontainer"
-        android:layout_width="fill_parent"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"/>
 
-    <FrameLayout
+    <FrameLayout class="com.example.chownow.ui.list.LocationsListFragment"
         android:id="@+id/listcontainer"
-        android:layout_width="fill_parent"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-</RelativeLayout>
+</LinearLayout>
