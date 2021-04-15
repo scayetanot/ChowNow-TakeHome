@@ -11,8 +11,8 @@ The application is currently loading one activity which will display 2 fragments
 
 Hypothesis: Not all data present in the JSON are treated. I have choose some of the data to display on the screen
 
-High Level Overview.
-
+**High Level Overview.
+**
 When the application start, the application submit a request to the provided API to pull all the locations information.
 When the request is made, the application can choose if we pull the data from remote location or locally from the DB.
 For now, the DB is only accessed to create the list of Locations in case internet is down.
@@ -35,7 +35,7 @@ data folder contain all the data class use for the app.
 
 utils contain few Swiss knife methods
 
-Improvments:
+**Improvments**:
 - Map displayed when Zooming on a specific location is not properly centered. For now, I kept a high view but the pin is correctly located. The boundaries may need to refine
 - Landscape/Portrait mode. The layout defined for landscape seems not loading properly.
 - On Network Error, the data are pulled from the database. For now, it's done only when no internet connection
