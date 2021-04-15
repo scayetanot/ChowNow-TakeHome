@@ -22,6 +22,12 @@ import com.example.chownow.ui.main.MainActivity.Companion.RESTAURANT_ID
 import com.example.chownow.utils.formatPhoneNumber
 import com.example.chownow.utils.remainingTime
 import com.example.chownow.utils.viewModelProvider
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.fragment_location_details.view.*
 import javax.inject.Inject
 
@@ -31,6 +37,8 @@ class LocationDetailsFragment: Fragment() {
     private lateinit var binding: FragmentLocationDetailsBinding
     private var restaurantId: String? = ""
     private var locationId: String? = ""
+    private lateinit var mapFragment: SupportMapFragment
+    private final lateinit var mapGoogle: GoogleMap
 
     private lateinit var openingHoursListAdapter: OpeningHoursListAdapter
 
@@ -53,19 +61,19 @@ class LocationDetailsFragment: Fragment() {
 
         binding.backButton.setOnClickListener { activity?.onBackPressed(); }
 
-        //val mapFragment = fragmentManager?.findFragmentById(R.id.map_fragment) as SupportMapFragment
-        //if (mapFragment != null) {
-        //    mapFragment.getMapAsync(OnMapReadyCallback {
-        //        val mMap = it
+        mapFragment = childFragmentManager.findFragmentById(R.id.map_fragment) as SupportMapFragment
+        if (mapFragment != null) {
+            mapFragment.getMapAsync(OnMapReadyCallback {
+                mapGoogle = it
 
                 // Add a marker in Sydney and move the camera
         //        val sydney = LatLng(-34.0, 151.0)
         //        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
         //        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
-        //    })
-        //} else {
-        //    Toast.makeText(this.context, "Error - Impossible to load Map", Toast.LENGTH_SHORT).show()
-        //}
+            })
+        } else {
+            Toast.makeText(this.context, "Error - Impossible to load Map", Toast.LENGTH_SHORT).show()
+        }
 
         return binding.root
     }
@@ -86,7 +94,12 @@ class LocationDetailsFragment: Fragment() {
             locationsList?.let {
                 if(it.fulfillment.dineIn != null) addDineInInformation(binding, it.fulfillment.dineIn)
                 if(!it.cuisines.isNullOrEmpty()) addTypeOfCuisines(binding, it.cuisines)
-                //MAP
+
+                if((it.address.latitude != null) && (it.address.longitude != null)) {
+                    locationLocationOnMap(it.address.latitude, it.address.longitude, it.name)
+                } else {
+                    Toast.makeText(this.context,"GPS Location not available", Toast.LENGTH_LONG).show();
+                }
 
                 binding.name.text = it.name
                 binding.address.text = it.address.formattedAddress.replace(",","\n")
@@ -137,6 +150,13 @@ class LocationDetailsFragment: Fragment() {
                 Toast.makeText(this.context,"Sorry we cannot dial for you", Toast.LENGTH_LONG).show();
             }
         }
+    }
+
+    private fun locationLocationOnMap(lat: Double, lon: Double, name: String?) {
+        val place = LatLng(lat, lon)
+        mapGoogle.addMarker(MarkerOptions().position(place).title(name))
+        mapGoogle.moveCamera(CameraUpdateFactory.newLatLng(place))
+        //mapGoogle.animateCamera( CameraUpdateFactory.zoomTo( 11.0f ))
     }
 
     private fun initListView(openingList: List<OpeningHours>){
