@@ -32,7 +32,8 @@
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyBVuCtQhqEywRhSPH9qi8Cze65ugcuklVY"/>
 
-        <activity android:name=".ui.main.MainActivity">
+        <activity android:name=".ui.main.MainActivity"
+            android:configChanges="">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

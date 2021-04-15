@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.text.format.DateFormat
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import com.example.chownow.ui.main.MainActivity.Companion.LOCATION_ID
 import com.example.chownow.ui.main.MainActivity.Companion.RESTAURANT_ID
 import com.google.i18n.phonenumbers.PhoneNumberUtil
@@ -20,6 +21,7 @@ fun AppCompatActivity.replaceFragment(fragment: Fragment, container: Int, restau
 
     supportFragmentManager
         .beginTransaction()
+        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
         .add(container, fragment, className)
         .addToBackStack(className.javaClass.name)
         .commit()

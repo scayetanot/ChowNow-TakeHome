@@ -18,6 +18,7 @@ import com.example.chownow.data.model.RestaurantLocation
 import com.example.chownow.databinding.FragmentListLocationsBinding
 import com.example.chownow.utils.viewModelProvider
 import javax.inject.Inject
+import kotlin.properties.Delegates
 
 
 class LocationsListFragment: Fragment() {
@@ -29,6 +30,7 @@ class LocationsListFragment: Fragment() {
     private lateinit var restaurantInformation: Locations
 
     private var listener: OnLocationSelectedListener? = null
+    private var isDualPane by Delegates.notNull<Boolean>()
 
 
     @Inject
@@ -51,6 +53,8 @@ class LocationsListFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        isDualPane = resources.getBoolean(R.bool.twoPaneMode);
+
         initViews()
         initObservers()
     }
