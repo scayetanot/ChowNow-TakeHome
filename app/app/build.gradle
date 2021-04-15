@@ -33,8 +33,10 @@ android {
         }
     }
 
-    dataBinding {
-        enabled true
+    buildFeatures {
+
+        dataBinding = true
+
     }
 
     buildTypes {
@@ -106,10 +108,12 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1'
 
     kapt 'com.android.databinding:compiler:3.1.4'
+  //  implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
 
     //room
-    implementation "androidx.room:room-ktx:2.2.6"
     implementation "androidx.room:room-runtime:2.2.6"
+    implementation "androidx.room:room-ktx:2.2.6"
     kapt "androidx.room:room-compiler:2.2.6"
 
 }

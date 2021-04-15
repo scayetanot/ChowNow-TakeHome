@@ -1,5 +1,6 @@
 package com.example.chownow.ui.details
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -24,16 +25,20 @@ class LocationDetailsFragmentViewModel @Inject constructor(
     fun getLocationDetails(restaurantId: String?, locationId: String?){
         viewModelScope.launch {
             try{
+                Log.d("SCA", "-----------------------------------------------------------")
                 when(val response = repositoryImpl.getLocationDetails(restaurantId!!)){
                     is ResultLocations.Success -> {
+                        Log.d("SCA", ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
                         _resultLocations.postValue(
                             response.data.first { it.id == locationId}
                         )
                     }
                     is ResultLocations.Error -> {
+                        Log.d("SCA", ">>>>>+++++++++++++++++++++++++++++++++++>>>>>>>>")
                         _errorMessage.postValue(response.exception.toString())
                     }
                 }
+                Log.d("SCA", "-----------------------------------------------------------")
 
             } catch (e: java.lang.Exception) {
                 _errorMessage.postValue(e.message)

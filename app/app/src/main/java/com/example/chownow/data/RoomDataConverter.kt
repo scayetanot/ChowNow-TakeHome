@@ -19,7 +19,7 @@ class RoomDataConverter : Serializable {
 
     @TypeConverter
     fun getObjectFromString(jsonString: String?): RestaurantAddress? {
-        val listType: Type = object : TypeToken<Locations?>() {}.type
+        val listType: Type = object : TypeToken<RestaurantAddress?>() {}.type
         return Gson().fromJson(jsonString, listType)
     }
 

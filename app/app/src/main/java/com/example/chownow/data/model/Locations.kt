@@ -7,6 +7,7 @@ import com.google.gson.annotations.SerializedName
 @Entity(tableName = "Locations", primaryKeys = ["id"])
 data class Locations(
     @SerializedName("id")
+    @ColumnInfo(name = "id")
     var id: String,
     @SerializedName("address")
     var address: RestaurantAddress,
