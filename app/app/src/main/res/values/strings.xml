@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">ChowNow</string>
     <string name="restaurant_name">Name Restaurant</string>
+    <string name="currently_open">This location is currently closed</string>
+    <string name="currently_close">This location is OPEN</string>
+    <string name="cuisines">Type of cuisines: </string>
+    <string name="opening_hours">Opening Hours: </string>
 </resources>

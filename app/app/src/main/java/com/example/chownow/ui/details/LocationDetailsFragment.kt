@@ -10,13 +10,22 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.chownow.BR
 import com.example.chownow.MainApplication.Companion.appComponents
 import com.example.chownow.R
 import com.example.chownow.data.model.RestaurantLocation
 import com.example.chownow.databinding.FragmentLocationDetailsBinding
 import com.example.chownow.ui.main.MainActivity.Companion.LOCATION_ID
 import com.example.chownow.ui.main.MainActivity.Companion.RESTAURANT_ID
+import com.example.chownow.utils.formatPhoneNumber
+import com.example.chownow.utils.remainingTime
 import com.example.chownow.utils.viewModelProvider
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
+import kotlinx.android.synthetic.main.fragment_location_details.view.*
 import javax.inject.Inject
 
 
@@ -25,8 +34,6 @@ class LocationDetailsFragment: Fragment() {
     private lateinit var binding: FragmentLocationDetailsBinding
     private var restaurantId: String? = ""
     private var locationId: String? = ""
-    private lateinit var locationInformation: RestaurantLocation
-
 
 
     @Inject
@@ -48,19 +55,19 @@ class LocationDetailsFragment: Fragment() {
 
         binding.backButton.setOnClickListener { activity?.onBackPressed(); }
 
-//        val mapFragment = fragmentManager?.findFragmentById(R.id.map_fragment) as SupportMapFragment
-//        if (mapFragment != null) {
-//            mapFragment.getMapAsync(OnMapReadyCallback {
-                //loadMap(map);
-//            })
-//        } else {
-//            Toast.makeText(this.context, "Error - Impossible to load Map", Toast.LENGTH_SHORT).show()
-//        }
+        //val mapFragment = fragmentManager?.findFragmentById(R.id.map_fragment) as SupportMapFragment
+        //if (mapFragment != null) {
+        //    mapFragment.getMapAsync(OnMapReadyCallback {
+        //        val mMap = it
 
-
-     //   binding.close.setOnClickListener(){
-     //       activity?.onBackPressed();
-     //   }
+                // Add a marker in Sydney and move the camera
+        //        val sydney = LatLng(-34.0, 151.0)
+        //        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
+        //        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        //    })
+        //} else {
+        //    Toast.makeText(this.context, "Error - Impossible to load Map", Toast.LENGTH_SHORT).show()
+        //}
 
         return binding.root
     }
@@ -79,9 +86,33 @@ class LocationDetailsFragment: Fragment() {
     private fun initObservers(){
         getViewModel().resultLocations.observe(viewLifecycleOwner, Observer { locationsList ->
             locationsList?.let {
-                locationInformation = it
-                Log.d("", "")
-             //   binding.restaurantName.text = it.name
+
+                binding.openOrClose.text = if(it.fulfillment.dineIn.isAvailableNow) {
+                    getString(R.string.currently_open)
+                } else {
+                    getString(R.string.currently_close)
+                }
+
+                if((it.fulfillment.dineIn.isAvailableNow != null)
+                    && it.fulfillment.dineIn.isAvailableNow
+                    && !it.fulfillment.dineIn.nextClosedTime.isNullOrEmpty()) {
+                    binding.remainingTime.text = remainingTime(it.fulfillment.dineIn.nextClosedTime)
+                    binding.remainingTime.visibility = View.VISIBLE
+                } else {
+                    binding.remainingTime.visibility = View.GONE
+                }
+
+                if(!it.cuisines.isNullOrEmpty())
+                    binding.typeOfCuisine.text = it.cuisines.joinToString(", ")
+
+                //MAP
+
+                binding.name.text = it.name
+                binding.address.text = it.address.formattedAddress
+                binding.phone.text = formatPhoneNumber(it.phone)
+
+             //   binding.setVariable(BR.viewModel, listViewmodel)
+
             }
         }
         )

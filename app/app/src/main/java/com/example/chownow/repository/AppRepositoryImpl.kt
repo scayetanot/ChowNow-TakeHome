@@ -57,7 +57,6 @@ class AppRepositoryImpl(
             try {
                 ResultLocations.Success(localDataSource.getLocationsById(id).locations)
             } catch (e: Throwable) {
-                Log.d("SCA----------", e.message!!)
                 ResultLocations.Error(Exception(e))
             }
         }

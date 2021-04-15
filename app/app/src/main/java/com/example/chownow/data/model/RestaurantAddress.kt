@@ -7,7 +7,7 @@ data class RestaurantAddress(
         @SerializedName("id")
         var id: Int,
         @SerializedName("street_address1")
-        var streetAddress1: String,
+        var streetAddress1: String?,
         @SerializedName("street_address2")
         var streetAddress2: String,
         @SerializedName("city")

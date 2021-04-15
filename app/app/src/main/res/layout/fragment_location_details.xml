@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -24,31 +25,115 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
             android:orientation="vertical"
             android:gravity="top|center">
 
             <TextView
+                android:id="@+id/open_or_close"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold|italic"
+                android:textColor="@color/squid_ink"
                 android:padding="10dp"
-                android:text="DETAILS" />
+                android:text="--" />
+
+            <TextView
+                android:id="@+id/remaining_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/squid_ink"
+                android:padding="10dp"
+                android:visibility="gone"
+                android:text="--"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/squid_ink"
+                    android:text="@string/cuisines"/>
+
+                <TextView
+                    android:id="@+id/type_of_cuisine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/goji_berry"
+                    android:text=""/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/squid_ink"
+                    android:text="@string/opening_hours"/>
+
+            </LinearLayout>
+
+
+
 
             <fragment
                 android:id="@+id/map_fragment"
-                android:layout_width="350dp"
-                android:layout_height="350dp"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
                 android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
                 class="com.google.android.gms.maps.SupportMapFragment" />
 
             <TextView
+                android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Location restaurant name" />
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/goji_berry"
+                android:text="--" />
 
             <TextView
-                android:layout_width="match_parent"
+                android:id="@+id/address"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="address" />
+                android:textSize="16sp"
+                android:textColor="@color/squid_ink"
+                android:text="--" />
+
+            <TextView
+                android:id="@+id/phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/squid_ink"
+                android:text="--" />
 
         </LinearLayout>
 
