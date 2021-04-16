@@ -9,6 +9,7 @@ import com.example.chownow.ui.list.OnLocationSelectedListener
 import com.example.chownow.utils.replaceFragment
 
 class MainActivity : AppCompatActivity(), OnLocationSelectedListener {
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -21,6 +22,10 @@ class MainActivity : AppCompatActivity(), OnLocationSelectedListener {
 
     override fun onLocationSelected(restaurantId: String, locationId: String) {
         replaceFragment(LocationDetailsFragment(), R.id.listcontainer, restaurantId, locationId)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
 
     companion object {

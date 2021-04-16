@@ -26,9 +26,10 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MarkerOptions
-import kotlinx.android.synthetic.main.fragment_location_details.view.*
 import javax.inject.Inject
 
 
@@ -38,7 +39,7 @@ class LocationDetailsFragment: Fragment() {
     private var restaurantId: String? = ""
     private var locationId: String? = ""
     private lateinit var mapFragment: SupportMapFragment
-    private final lateinit var mapGoogle: GoogleMap
+    private lateinit var mapGoogle: GoogleMap
 
     private lateinit var openingHoursListAdapter: OpeningHoursListAdapter
 
@@ -152,10 +153,17 @@ class LocationDetailsFragment: Fragment() {
     }
 
     private fun locationLocationOnMap(lat: Double, lon: Double, name: String?) {
+
         val place = LatLng(lat, lon)
+        val cameraLocation: CameraPosition = CameraPosition.Builder().
+                                target(place)
+                                .zoom(15.5f)
+                                .bearing(0f)
+                               // .tilt(25f)
+                                .build()
+
         mapGoogle.addMarker(MarkerOptions().position(place).title(name))
-        mapGoogle.moveCamera(CameraUpdateFactory.newLatLng(place))
-        //mapGoogle.animateCamera( CameraUpdateFactory.zoomTo( 11.0f ))
+        mapGoogle.moveCamera(CameraUpdateFactory.newCameraPosition(cameraLocation))
     }
 
     private fun initListView(openingList: List<OpeningHours>){
