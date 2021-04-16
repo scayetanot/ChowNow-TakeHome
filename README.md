@@ -36,7 +36,6 @@ data folder contain all the data class use for the app.
 utils contain few Swiss knife methods
 
 **Improvments**:
-- Map displayed when Zooming on a specific location is not properly centered. For now, I kept a high view but the pin is correctly located. The boundaries may need to refine
 - Landscape/Portrait mode. The layout defined for landscape seems not loading properly.
 - On Network Error, the data are pulled from the database. For now, it's done only when no internet connection
 
